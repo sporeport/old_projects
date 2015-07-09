@@ -1,0 +1,13 @@
+<form class="user-form">
+  <label for="username">Username</label>
+  <input id="username"
+         type="text"
+         name="user[username]"
+         value="<%= user.escape('username')%>">
+
+  <label for"password">Password</label>
+  <input id="password"
+         type="password"
+         name="user[password]">
+  <button>SignUp/LogIn</button>
+</form>
