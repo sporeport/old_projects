@@ -2,6 +2,16 @@
 
 <ul>
   <% feeds.each( function (feed) { %>
-    <li><a href="#/feeds/<%=feed.id%>"><%= feed.escape("title") %></a></li>
+    <li>
+      <a href="#/feeds/<%=feed.id%>"><%= feed.escape("title") %></a>
+      <br>
+      <button class="feed-delete" data-id="<%= feed.id %>">Delete this feed</button>
+    </li>
   <% }) %>
 </ul>
+
+<form class="feed-add">
+  <label for="url">URL</label>
+  <input id="url" type="text" name="feed[url]" value="<%= feedForm.escape('url') %>">
+  <button>Add a new feed</button>
+</form>
