@@ -1,0 +1,31 @@
+<h1><%= @post.title %></h1>
+<em>Submitted by <%= @post.author.user_name %></em>
+<br>
+
+<% if @post.url %>
+<p>
+  <a href="<%= @post.url %>"><%= @post.url %></a>
+</p>
+<% end %>
+
+<% if @post.content %>
+  <p>
+    <%= @post.content %>
+  </p>
+<% end %>
+
+<a href="<%= edit_post_url(@post) %>">Edit</a><br>
+<a href="<%= subs_url %>">All subReddits</a>
+
+<h3>Comments:</h3>
+
+<ul>
+  <% @post.comments.each do |comment| %>
+    <li>
+      <%= comment.content %>
+      <em>
+        by <%= comment.author.user_name %>
+      </em>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,15 @@
+<%= heading("All Users") %>
+<ul>
+<% @users.each do |user| %>
+  <li><a href="<%= user_url(user) %>"><%= user.email %></a></li>
+<% end %>
+</ul>
+
+<a href="<%= bands_url %>">Check Out these bands</a><br>
+<a href="<%= new_user_url %>">Sign up!</a><br>
+<a href="<%= new_session_url %>">Log in</a><br>
+<form action="<%= session_url %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <%= generate_authenticity_token %>
+  <input type="submit" value="log out">
+</form>

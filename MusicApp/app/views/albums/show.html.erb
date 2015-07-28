@@ -1,0 +1,24 @@
+<%= heading(@album.name) %>
+<h5>Album Type: <%= @album.album_type %></h5>
+
+
+<style>
+  form {
+    display: inline;
+  }
+</style>
+
+<h2>tracks</h2>
+<ul>
+  <% @album.tracks.each do |track| %>
+    <li><a href="<%= track_url(track) %>">
+      <%= track.name %></a>
+      <%= delete_button(track_url(track)) %>
+      <%= edit_button(edit_track_url(track)) %>
+    </li>
+  <% end %>
+  <li><%=new_button(new_album_track_url(@album))%></li>
+</ul>
+
+
+<a href="<%= band_url(@album.band) %>">Back to band</a>

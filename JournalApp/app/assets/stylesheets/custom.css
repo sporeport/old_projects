@@ -1,0 +1,22 @@
+
+body, html, div, p, h1, a, ul, li {
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+
+}
+h1 {
+  text-align: center;
+}
+.content {
+  float: left;
+  padding: 30px;
+  margin-left: 40px;
+}
+
+.sidebar {
+  float: left;
+  border-right: 2px solid black;
+  padding: 30px;
+}

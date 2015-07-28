@@ -1,0 +1,17 @@
+<h1>All Subreddits</h1>
+
+<ul>
+  <li>
+    <form action="<%= new_sub_url %>" method="get">
+      <button>New subReddit</button>
+    </form>
+  </li>
+  <% @subs.reverse.each do |sub| %>
+  <li>
+    <a href="<%= sub_url(sub) %>">
+      <%= sub.title %>
+      (moderated by: <%= sub.moderator.user_name %>)
+    </a>
+  </li>
+  <% end %>
+</ul>

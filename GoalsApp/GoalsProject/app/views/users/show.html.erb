@@ -1,0 +1,44 @@
+<%= show_current_user %>
+<h1><%= @user.username %></h1>
+
+<h3>Incomplete Goals</h3>
+
+  <ul>
+    <% @user.incomplete_goals.each do |goal| %>
+      <% if goal.privateness == false || current_user == @user %>
+        <li><%= goal.content %></li>
+        <% if current_user == @user %>
+          <form action="<%= goal_url(goal) %>" method="post">
+            <%= form_auth %>
+            <input type="hidden" name="_method" value="put">
+            <input type="hidden" name="goal[complete]" value="true">
+            <button>Mark as Complete</button>
+          </form>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <% if current_user == @user %>
+    <form action="<%= goals_url %>" method="post">
+      <%= form_auth %>
+      <label>Create A Goal:<br>
+        <textarea name="goal[content]" rows="8" cols="40"><%= @goal.content %></textarea>
+      </label><br>
+      <label>Private
+        <input type="checkbox" name="goal[privateness]" value="true"
+               <%= "checked" if @goal.privateness == true %>><br>
+      </label>
+      <button>Create goal</button>
+    </form>
+  <% end %>
+
+  <h3>Completed Goals</h3>
+
+  <ul>
+    <% @user.completed_goals.each do |goal| %>
+      <% if goal.privateness == false || current_user == @user %>
+        <li><%= goal.content %></li>
+      <% end %>
+    <% end %>
+  </ul>

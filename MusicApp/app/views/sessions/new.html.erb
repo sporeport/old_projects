@@ -1,0 +1,16 @@
+<%= heading("Log in!") %>
+
+<form action="<%= session_url %>" method="post">
+  <%= generate_authenticity_token %>
+  <label>
+    Email
+    <input type="text" name="user[email]" value="<%= @user.email %>">
+  </label>
+
+  <label>
+    Password
+    <input type="password" name="user[password]">
+  <label>
+
+  <br><button>submit</button>
+</form>

@@ -1,0 +1,12 @@
+<%= heading(@track.name) %>
+
+<ul>
+  <li>Track Number: <%= @track.track_num %></li>
+  <li>Track Name: <%= @track.name %></li>
+  <li>Song Type: <%= @track.song_type %></li>
+</ul>
+
+<h4>Lyrics:</h4>
+<p><%= @track.lyrics %></p>
+
+<a href="<%= album_url(@track.album) %>">Back to album</a>

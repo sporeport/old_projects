@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MusicApp</title>
+</head>
+<body>
+
+<%= logged_in_as %>
+<p><%= flash[:errors] unless flash[:errors].blank? %></p>
+<%= yield %>
+
+</body>
+</html>

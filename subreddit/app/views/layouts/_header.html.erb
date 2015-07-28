@@ -1,0 +1,31 @@
+<table>
+  <tr>
+  <% if current_user %>
+    <td>
+      Logged in as:
+      <%= current_user.user_name %>
+    </td>
+    <td>
+      <form action="<%= session_url %>" method="post">
+        <%= form_authentication %>
+        <input type="hidden"
+               name="_method"
+               value="delete">
+
+        <button type="submit">Sign out</button>
+      </form>
+    </td>
+  <% else %>
+    <td>
+      <form action="<%= new_session_url %>" method="get">
+        <button type="submit">Sign in</button>
+      </form>
+    </td>
+    <td>
+      <form action="<%= new_user_url %>" method="get">
+        <button type="submit">Sign up</button>
+      </form>
+    </td>
+  <% end %>
+  </tr>
+</table>

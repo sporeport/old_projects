@@ -1,0 +1,116 @@
+<script type="text/template" id="pokemon-list-item-template">
+  <li class="poke-list-item" data-id="<%%= pokemon.id %>">
+    <%%= pokemon.escape("name") + " –– " + pokemon.escape("poke_type") %>
+  </li>
+</script>
+
+
+<script type="text/template" id="pokemon-detail-template">
+  <section class="detail">
+
+    <img src="<%%= pokemon.escape('image_url') %>" alt="pokemon" />
+
+    <%% _.each(pokemon.attributes, function (value, key, list) { %>
+      <%% if (key !== "id" && key !== "image_url"){ %>
+        <detail><%%= key + ": " + value %></detail>
+      <%% } %>
+    <%% }) %>
+
+  </section>
+
+  <span style="font-weight: bold;">Toys:</span><br>
+  <ul class="toys"></ul>
+</script>
+
+
+<script type="text/template" id="toy-list-item-template">
+  <li class="toy-list-item"
+    data-id="<%%= toy.id %>"
+    data-pokemon-id="<%%= toy.escape("pokemon_id") %>">
+    <%%= toy.escape("name") %><br>
+    <%%= toy.escape("happiness") %><br>
+    <%%= toy.escape("price") %><br>
+  </li>
+</script>
+
+<script type="text/template" id="toy-detail-template">
+  <section>
+
+    <img src="<%%= toy.escape('image_url') %>" alt="toy image" />
+
+    <%% _.each(toy.attributes, function (value, key, list) { %>
+      <%% if (key !== "id" && key !== "image_url" && key !== "pokemon_id"){ %>
+        <detail><%%= key + ": " + value %></detail>
+      <%% } %>
+    <%% }) %>
+
+    <select data-toy-id="<%%= toy.id %>"
+        data-pokemon-id="<%%= toy.escape("pokemon_id")%>">
+        <%% pokes.each( function (pokemon) { %>
+          <option value="<%%= pokemon.id %>"
+            <%%= pokemon.id === parseInt(toy.escape("pokemon_id")) ? "selected" : "" %>>
+            <%%= pokemon.escape("name") %>
+          </option>
+        <%% }); %>
+    </select>
+
+  </section>
+
+</script>
+
+<script type="text/template" id="pokemon-form-template">
+</script>
+
+<!-- this.$toyDetail.empty();
+
+var $detail = $('<div class="detail">');
+$detail.append('<img src="' + toy.escape('image_url') + '"><br>');
+for (var attr in toy.attributes) {
+  if(attr !== 'pokemon_id' && attr !== 'image_url') {
+    var $span = $('<span style="font-weight:bold;">');
+    $span.html(attr + ': ');
+    $detail.append($span);
+    $detail.append(toy.get(attr));
+    $detail.append('<br>');
+  }
+}
+
+// Phase III
+var $pokemonSelect = $('<select>');
+$pokemonSelect.data("pokemon-id", toy.get("pokemon_id"));
+$pokemonSelect.data("toy-id", toy.id);
+this.pokes.each(function (pokemon) {
+  var $pokemonOption = $('<option>');
+  $pokemonOption.attr("value", pokemon.id);
+  $pokemonOption.text(pokemon.get("name"));
+  if (pokemon.id == toy.get("pokemon_id")) {
+    $pokemonOption.prop("selected", true);
+  }
+  $pokemonSelect.append($pokemonOption);
+});
+$detail.append($pokemonSelect);
+
+this.$toyDetail.html($detail); -->
+
+
+
+
+<!-- create_table "pokemons", force: true do |t|
+  t.string   "name",       null: false
+  t.integer  "attack",     null: false
+  t.integer  "defense",    null: false
+  t.string   "poke_type",  null: false
+  t.string   "moves",                   array: true
+  t.string   "image_url",  null: false
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end -->
+
+<!-- t.integer  "pokemon_id", null: false
+t.string   "name",       null: false
+t.integer  "price",      null: false
+t.integer  "happiness",  null: false
+t.string   "image_url",  null: false
+t.datetime "created_at"
+t.datetime "updated_at"
+end -->

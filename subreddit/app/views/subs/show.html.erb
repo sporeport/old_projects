@@ -1,0 +1,41 @@
+<h1><%= @sub.title %></h1>
+
+<% if current_user == @sub.moderator %>
+  <table>
+    <tr>
+      <td>
+        <form action="<%= edit_sub_url(@sub) %>"
+              method="get">
+          <%= form_authentication %>
+          <button type="submit">Edit</button>
+        </form>
+      </td>
+      <td>
+        <form action="<%= sub_url(@sub) %>"
+              method="post">
+          <%= form_authentication %>
+          <input type="hidden"
+                 name="_method"
+                 value="delete">
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+<p>
+  <em>Moderated by: <%= @sub.moderator.user_name %></em>
+</p>
+
+<ul>
+  <% @sub.posts.each do |post| %>
+    <li>
+      <a href="<%= post_url(post) %>">
+        <%= post.title %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
+<a href="<%= subs_url %>">All subReddits</a>

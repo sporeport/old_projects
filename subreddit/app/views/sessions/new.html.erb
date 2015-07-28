@@ -1,0 +1,34 @@
+<h1>Sign in!</h1>
+
+<form action="<%= session_url %>" method="post">
+  <%= form_authentication %>
+  <table>
+    <tr>
+      <td>
+        <label for="user_email">Email</label>
+      </td>
+      <td>
+        <input type="text"
+               name="user[email]"
+               value="<%= @user.email %>"
+               id="user_email">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="user_password">Password</label>
+      </td>
+      <td>
+        <input type="password"
+               name="user[password]"
+               id="user_password">
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button type="submit">Sign in</button>
+      </td>
+    </tr>
+  </table>
+</form>

@@ -1,0 +1,22 @@
+<%= heading(@band.name) %>
+
+<style>
+  form {
+    display: inline;
+  }
+</style>
+
+<h2>Albums</h2>
+
+<ul>
+  <% @band.albums.each do |album| %>
+    <li><a href="<%= album_url(album) %>">
+      <%= album.name %></a>
+      <%= delete_button(album_url(album)) %>
+      <%= edit_button(edit_album_url(album)) %>
+    </li>
+  <% end %>
+    <li><%= new_button(new_band_album_url(@band)) %></li>
+</ul>
+
+<a href="<%= bands_url %>">Back to bands page</a>
